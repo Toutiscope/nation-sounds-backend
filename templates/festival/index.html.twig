@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Le festival{% endblock %}
+
+{% block body %}
+<div class="container festival">
+    <h1>Créer un festival</h1>
+
+    {% for msg in app.session.flashBag.get('success') %}
+    <div class="success-message">
+        {{msg}}
+    </div>
+    {% endfor %}
+
+    {{ form(festivalForm) }}
+
+    <div class="list">
+        <h2>Liste des éditions du festival</h2>
+        <ul>
+            {% for festival in festivals %}
+            <li>
+                <a href="{{ path('festival_edit', {'id':festival.id}) }}">
+                    <p>{{ festival.title }}</p>
+                    <img src="{{ asset('images/edit.svg') }}" alt="Modifier">
+                </a>
+                <a href="{{ path('festival_delete', {'id': festival.id}) }}" class="delete"
+                    onclick="return confirm('Attention ceci va supprimer l\'édition selectionnée')"><button><img
+                            src="{{asset('images/delete.svg')}}" alt="Supprimer"></button></a>
+            </li>
+            {% endfor %}
+    </div>
+</div>
+
+
+{% endblock %}

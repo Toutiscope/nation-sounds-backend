@@ -1,0 +1,114 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+  Modifier un bar
+{% endblock %}
+
+{% block body %}
+  <div class="container poi">
+  <a href="{{path('interactive_map')}}" class="newPoi"><button class="small-btn">Ajouter un nouveau POI →</button></a>
+    <h1>
+      Modifier un bar
+    </h1>
+
+    {% for msg in app.session.flashBag.get('success') %}
+      <div class="success-message">
+        {{ msg }}
+      </div>
+    {% endfor %}
+
+    {% for msg in app.session.flashBag.get('error') %}
+      <div class="error-message">
+        {{ msg }}
+      </div>
+    {% endfor %}
+
+    {{ form(barForm) }}
+
+    <div class="list">
+      <h2>
+        Liste des points d'intérêt
+      </h2>
+
+      {% if stages %}
+        <h3>Les scènes</h3>
+        <ul>
+        {% for poi in stages %}
+          <li>
+            <a href="{{path('stage_edit',{id: poi.id})}}">
+                <p><strong>{{ poi.title }}</strong></p>
+                <img src="{{ asset('images/edit.svg') }}" alt="Modifier" />
+              </a>
+            <a href="{{path('stage_delete',{id: poi.id})}}" class="delete"
+              onclick="return confirm('Êtes-vous sûr de vouloir supprimer le point d\'intérêt selectionné ?')">
+              <button>
+                <img src="{{ asset('images/delete.svg') }}" alt="Supprimer" />
+              </button>
+            </a>
+          </li>
+        {% endfor %}
+          </ul>
+      {% endif %}
+
+      {% if wcs %}
+        <h3>Les points WC</h3>
+        <ul>
+          {% for poi in wcs %}
+            <li>
+              <a href="{{path('wc_edit',{id: poi.id})}}">
+                  <p><strong>{{ poi.title }}</strong> / {{ poi.gender }} x{{ poi.number }} - <em>{{ poi.company }}</em></p>
+                  <img src="{{ asset('images/edit.svg') }}" alt="Modifier" />
+                </a>
+              <a href="{{path('wc_delete',{id: poi.id})}}" class="delete"
+                onclick="return confirm('Êtes-vous sûr de vouloir supprimer le point d\'intérêt selectionné ?')">
+                <button>
+                  <img src="{{ asset('images/delete.svg') }}" alt="Supprimer" />
+                </button>
+              </a>
+            </li>
+          {% endfor %}
+          </ul>
+      {% endif %}
+
+      {% if bars %}
+      <h3>Les bars</h3>
+      <ul>
+        {% for poi in bars %}
+          <li>
+            <a href="{{path('bar_edit',{id: poi.id})}}">
+                <p><strong>{{ poi.title }}</strong> - <em>{{ poi.company }}</em></p>
+                <img src="{{ asset('images/edit.svg') }}" alt="Modifier" />
+              </a>
+            <a href="{{path('bar_delete',{id: poi.id})}}" class="delete"
+              onclick="return confirm('Êtes-vous sûr de vouloir supprimer le point d\'intérêt selectionné ?')">
+              <button>
+                <img src="{{ asset('images/delete.svg') }}" alt="Supprimer" />
+              </button>
+            </a>
+          </li>
+        {% endfor %}
+        </ul>
+      {% endif %}
+
+      {% if caterings %}
+      <h3>Les points restauration</h3>
+      <ul>
+        {% for poi in caterings %}
+          <li>
+            <a href="{{path('catering_edit',{id: poi.id})}}">
+                <p><strong>{{ poi.title }}</strong> - <em>{{ poi.company }}</em></p>
+                <img src="{{ asset('images/edit.svg') }}" alt="Modifier" />
+              </a>
+            <a href="{{path('catering_delete',{id: poi.id})}}" class="delete"
+              onclick="return confirm('Êtes-vous sûr de vouloir supprimer le point d\'intérêt selectionné ?')">
+              <button>
+                <img src="{{ asset('images/delete.svg') }}" alt="Supprimer" />
+              </button>
+            </a>
+          </li>
+        {% endfor %}
+        </ul>
+      {% endif %}
+    </div>
+  </div>
+{% endblock %}

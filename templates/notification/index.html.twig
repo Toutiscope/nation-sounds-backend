@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Créer un notification{% endblock %}
+
+{% block body %}
+<div class="container artist">
+
+    <h1>Fiche notification</h1>
+
+    {% for msg in app.session.flashBag.get('success') %}
+    <div class="success-message">
+        {{msg}}
+    </div>
+    {% endfor %}
+
+
+    {{ form(notificationForm) }}
+
+    <div class="list">
+        <h2>Liste des notifications</h2>
+        <ul>
+            {% for notification in notifications %}
+            <li>
+                <a href="{{ path('notification_edit', {'id':notification.id}) }}">
+                    <p><strong>{{ notification.title }}</strong></p>
+                    <img src="{{ asset('images/edit.svg') }}" alt="Modifier">
+                </a>
+                <a href="{{ path('notification_delete', {'id': notification.id}) }}" class="delete"
+                    onclick="return confirm('Attention ceci va supprimer la notification selectionnée')"><button><img
+                            src="{{asset('images/delete.svg')}}" alt="Supprimer"></button></a>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,293 @@
+@import url("https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,700&display=swap");
+
+body {
+  background: #f5f5f5;
+  font-family: "Raleway", sans-serif;
+  margin: 0;
+}
+
+footer {
+  border-top: 2px solid orange;
+  font-size: 0.8em;
+  margin: 4em 2em 0 2em;
+  padding: 1em;
+  text-align: center;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: auto;
+  max-width: 50rem;
+  padding-bottom: 4em;
+  width: 90%;
+}
+
+.container form {
+  width: 100%;
+}
+
+#logoSite,
+#homeSite {
+  height: 2rem;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  background: #ff8e4e;
+  padding: 1rem 1.4rem;
+}
+
+h1,
+h2 {
+  border-bottom: 3px solid #ff8e4e;
+  margin-bottom: 2em;
+  width: 100%;
+}
+
+button[type="submit"],
+.big_btn {
+  background: #d0f4de;
+  border-radius: 50px;
+  border: 1px solid black;
+  box-shadow: -2px 5px 0 #a9def9;
+  cursor: pointer;
+  display: block;
+  font-size: 1.125rem;
+  font-weight: 700;
+  margin: auto;
+  /* min-width: 20rem; */
+  padding: 0.6em 4em;
+  position: relative;
+}
+
+.btn-2 {
+  background: #a9def9;
+}
+
+.small-btn {
+  /* background: #d0f4de; */
+  border-radius: 50px;
+  border: 1px solid black;
+  box-shadow: -2px 5px 0 #a9def9;
+  cursor: pointer;
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 700;
+  margin: auto;
+  /* min-width: 20rem; */
+  padding: 0.4em 1.6em;
+}
+
+.logout-btn {
+  display: inline;
+  margin-left: 1em;
+}
+
+/* MENU */
+
+.menu {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 75vh;
+}
+
+.menu a {
+  text-decoration: none;
+  margin: 0.5em auto;
+}
+
+.menu-btn {
+  padding: 0.6em 1em;
+  min-width: 90vw;
+}
+
+@media (min-width: 640px) {
+  .menu-btn {
+    min-width: 20em;
+  }
+}
+
+.register-link {
+  font-size: 0.8em;
+  text-align: center;
+}
+
+#demands {
+  background: #ff6a00;
+  border: 1px solid black;
+  border-radius: 2em;
+  padding: 0.2em 0.5em;
+  position: absolute;
+  right: 8px;
+  top: -0.5em;
+}
+
+/* FORMULAIRES */
+
+.success-message {
+  background-color: #d0f4de;
+  border: 1px solid black;
+  margin: -3em auto 1.5em;
+  text-align: center;
+  padding: 0.5em;
+  width: 98%;
+}
+
+label {
+  display: block;
+  font-weight: bold;
+  width: 100%;
+}
+
+.inline {
+  display: inline;
+}
+
+input:not([type="checkbox"]),
+textarea,
+select {
+  width: 98%;
+}
+
+select {
+  min-width: 100%;
+}
+
+input,
+textarea,
+select {
+  border: 1px solid rgb(224, 224, 224);
+  margin: 0.4em auto 1.6rem auto;
+  padding: 0.6em;
+}
+
+input[type="checkbox"] {
+  margin-left: 1.5em;
+}
+
+/* Messages d'erreurs des formulaires */
+form div ul {
+  margin: 0;
+  padding: 0;
+}
+
+form div ul li {
+  color: rgb(218, 17, 17);
+  font-size: 0.8em;
+  font-style: italic;
+  font-weight: bold;
+  list-style: none;
+  text-align: right;
+}
+
+.captcha {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  margin: 2em auto auto;
+  max-width: 20em;
+}
+
+a.newPoi {
+  text-decoration: none;
+  margin: 1.5em 0 -1.5em auto;
+}
+
+/* LISTE DES ELEMENTS ENREGISTRES */
+
+.list {
+  margin-top: 3em;
+  width: 100%;
+}
+
+.list h3 {
+  margin-bottom: 0;
+  margin-top: 2em;
+}
+
+.list ul {
+  margin: 0.4rem 0 1rem 0;
+  padding: 0;
+  width: 100%;
+}
+
+.list li {
+  display: flex;
+  justify-content: space-between;
+  list-style: none;
+  padding: 0 0.4em;
+}
+
+.list li a {
+  align-items: center;
+  color: black;
+  display: flex;
+  justify-content: space-between;
+  text-decoration: none;
+  width: 100%;
+}
+
+.list li a img {
+  height: 1.5em;
+  padding: 0 0.4em;
+}
+
+.list button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.list .delete {
+  max-width: 2em;
+  padding-right: 0.8em;
+}
+
+.list .delete img {
+  height: 1.6em;
+}
+
+.list li:nth-child(odd) {
+  background: #fcf6bd;
+}
+
+.list li:nth-child(even) {
+  background: white;
+}
+
+.list p {
+  margin: 0.4em 0;
+}
+
+/* PAGE Modification Users */
+#edit_user_roles {
+  display: flex;
+  padding: 0.5em 0;
+  max-width: 350px;
+}
+
+#edit_user_roles label {
+  font-weight: normal;
+}
+
+#edit_user_roles input[type="checkbox"] {
+  margin-left: 0;
+  margin-right: 0.8em;
+}
+
+.users table {
+  min-width: 90%;
+}
+
+.users table tbody tr td:not(:first-child) {
+  text-align: center;
+}
+
+.users table thead tr th {
+  border-bottom: 1px solid #a9def9;
+  padding-bottom: 1em;
+}

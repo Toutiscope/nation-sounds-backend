@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <meta name="description" content="Festival Nation Sounds">
+    <link rel="icon" href="../public/favicon.ico" />
+    <title>
+      {% block title %}
+        Nation Sounds Festival
+      {% endblock %}
+    </title>
+    {% block stylesheets %}
+      <link href="{{ asset('css/style.css') }}" rel="stylesheet" />
+    {% endblock %}
+  </head>
+
+  <body>
+    <header>
+      <a href="{{ path('home_page') }}" title="Accueil" href="/">
+        <img src="{{ asset('images/LogoInline.svg') }}"
+          alt="Nation Sounds Festival - Logo"
+          id="logoSite" />
+      </a>
+
+      <a href="{{ path('home_page') }}" title="Accueil" href="/">
+        <img src="{{ asset('images/home.svg') }}" alt="Home" id="homeSite" />
+      </a>
+    </header>
+    {% block body %}
+
+    {% endblock %}
+    {% block javascripts %}
+
+    {% endblock %}
+  </body>
+
+  <footer>
+    {% if app.user %}
+      Vous êtes connecté(e) en tant que <strong>{{ app.user.username }}</strong>
+      <a href="{{ path('app_logout') }}">
+        <button class="small-btn logout-btn" type="button">Déconnexion</button>
+      </a>
+    {% endif %}
+  </footer>
+</html>

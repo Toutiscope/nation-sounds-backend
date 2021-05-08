@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Modifier un artiste {% endblock %}
+
+{% block body %}
+<div class="container artist">
+
+  <h1>Editer un artiste </h1>
+
+  {% for msg in app.session.flashBag.get('success') %}
+  <div class="success-message">
+    {{msg}}
+  </div>
+  {% endfor %}
+
+  {{ form_start(artistForm) }}
+
+  {{ form(artistForm) }}
+
+  {{ form_end(artistForm) }}
+
+  <div class="list">
+    <h2>Liste des artistes</h2>
+    <ul>
+      {% for artist in artists %}
+      <li>
+        <a href="{{ path('artist_edit', {'id':artist.id}) }}">
+          <p><strong>{{ artist.name }}</strong> / {{artist.musicStyle}}</p>
+          <img src="{{ asset('images/edit.svg') }}" alt="Editer">
+        </a>
+        <a href="{{ path('artist_delete', {'id': artist.id}) }}" class="delete"
+          onclick="return confirm('Attention ceci va supprimer l\'artiste selectionné')"><button><img
+              src="{{asset('images/delete.svg')}}" alt="Supprimer"></button></a>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+
+</div>
+{% endblock %}

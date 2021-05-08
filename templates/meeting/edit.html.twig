@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Modifier un artiste {% endblock %}
+
+{% block body %}
+<div class="container artist">
+
+  <h1>Editer une rencontre </h1>
+
+  {% for msg in app.session.flashBag.get('success') %}
+  <div class="success-message">
+    {{msg}}
+  </div>
+  {% endfor %}
+
+  {{ form_start(meetingForm) }}
+
+  {{ form(meetingForm) }}
+
+  {{ form_end(meetingForm) }}
+
+  <div class="list">
+    <h2>Liste des recontres</h2>
+    <ul>
+      {% for meeting in meetings %}
+      <li>
+        <a href="{{ path('meeting_edit', {'id':meeting.id}) }}">
+           <p><strong></strong> / {{meeting.day}} / {{meeting.hour}} h</p>
+          <img src="{{ asset('images/edit.svg') }}" alt="Editer">
+        </a>
+        <a href="{{ path('meeting_delete', {'id':meeting.id}) }}" class="delete"
+          onclick="return confirm('Attention ceci va supprimer la rencontre selectionnée')"><button><img
+              src="{{asset('images/delete.svg')}}" alt="Supprimer"></button></a>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+
+</div>
+{% endblock %}

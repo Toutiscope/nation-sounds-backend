@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+  Inscription
+{% endblock %}
+
+{% block body %}
+  {% for flashError in app.flashes('verify_email_error') %}
+    <div class="alert alert-danger" role="alert">
+      {{ flashError }}
+    </div>
+  {% endfor %}
+
+  <div class="container">
+    <h1>
+      Inscription
+    </h1>
+    {{ form_start(registrationForm) }}
+    {{
+      form_row(
+        registrationForm.email,
+        {
+          label: 'Adresse e-mail'
+        }
+      )
+    }}
+    {{
+      form_row(
+        registrationForm.plainPassword,
+        {
+          label: 'Mot de passe',
+          attr: {
+            class: 'password'
+          }
+        }
+      )
+    }}
+    <div>
+      <label class="checkbox" for="{{ registrationForm.agreeTerms.vars.id }}">
+        J'accepte les <a href="https://fr.wikipedia.org/wiki/Conditions_g%C3%A9n%C3%A9rales_d%27utilisation"
+          target="_blank">
+          conditions d'utilisation
+        </a>
+        {{ form_widget(registrationForm.agreeTerms) }}
+      </label>
+    </div>
+    <div class="captcha">
+      {{ form_errors(registrationForm.captcha) }}
+      {{ form_label(registrationForm.captcha) }}
+      {{ form_widget(registrationForm.captcha) }}
+    </div>
+    <button type="submit">Inscription</button>
+    {{ form_end(registrationForm) }}
+  </div>
+{% endblock %}

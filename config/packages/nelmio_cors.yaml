@@ -1,0 +1,11 @@
+nelmio_cors:
+    defaults:
+        allow_credentials: true
+        origin_regex: true
+        allow_origin: ['^http://localhost:[0-9]+', '\.niobey[^\/]+(.*)']
+        allow_methods: ['GET']
+        allow_headers: ['Access-Control-Allow-Origin']
+        max_age: 3600
+    paths:
+        '^/api/': ~
+

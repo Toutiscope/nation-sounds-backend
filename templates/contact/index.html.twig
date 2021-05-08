@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}contact{% endblock %}
+
+{% block body %}
+
+<div class="container contact">
+
+    <h1>Fiche contact</h1>
+
+    {% for msg in app.session.flashBag.get('success') %}
+    <div class="success-message">
+        {{msg}}
+    </div>
+    {% endfor %}
+
+
+    {{ form(contactForm) }}
+
+    <div class="list">
+        <h2>Liste des contacts</h2>
+        <ul>
+            {% for contact in contacts %}
+            <li>
+            <a href="{{ path('contact_edit', {'id':contact.id}) }}">
+                <p><strong>{{ contact.name }}</strong></p>
+                   <img src="{{ asset('images/edit.svg') }}" alt="Modifier">
+                </a>
+                <a href="{{ path('contact_delete', {'id': contact.id}) }}" class="delete"
+                    onclick="return confirm('Attention ceci va supprimer l\'contact selectionné')"><button><img
+                            src="{{asset('images/delete.svg')}}" alt="Supprimer"></button></a>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+
+{% endblock %}

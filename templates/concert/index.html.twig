@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Créer un concert{% endblock %}
+
+{% block body %}
+<div class="container artist">
+
+    <h1>Fiche Concert</h1>
+
+    {% for msg in app.session.flashBag.get('success') %}
+    <div class="success-message">
+        {{msg}}
+    </div>
+    {% endfor %}
+
+
+    {{ form(concertForm) }}
+
+    <div class="list">
+        <h2>Liste des concerts</h2>
+        <ul>
+            {% for concert in concerts %}
+            <li>
+                <a href="{{ path('concert_edit', {'id':concert.id}) }}">
+                    <p><strong>{{ concert.artist }}</strong> {{ concert.day}} / {{concert.hour}}h</p>
+                    <img src="{{ asset('images/edit.svg') }}" alt="Modifier">
+                </a>
+                <a href="{{ path('concert_delete', {'id': concert.id}) }}" class="delete"
+                    onclick="return confirm('Attention ceci va supprimer l\'artist selectionné')"><button><img
+                            src="{{asset('images/delete.svg')}}" alt="Supprimer"></button></a>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+
+
+{% endblock %}
